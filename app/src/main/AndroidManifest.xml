@@ -16,6 +16,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+        android:name=".ProductCatalogue"
+        android:label="Ürünler"
+        android:parentActivityName=".MainActivity">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.example.grocerypricelister.MainActivity" />
+    </activity>
+        <activity
+            android:name=".Search"
+            android:label="Arama"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.grocerypricelister.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
