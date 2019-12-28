@@ -6,7 +6,7 @@ import android.widget.Toolbar;
 
 public class Search extends AppCompatActivity {
 
-    int a = 0;
+
     Toolbar search;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
