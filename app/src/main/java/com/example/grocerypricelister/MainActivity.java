@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -22,6 +24,11 @@ public class MainActivity extends AppCompatActivity {
     protected void seeTheSearchBar (View view)
     {
         Intent intent = new Intent(getApplicationContext(), Search.class);
+        startActivity(intent);
+    }
+
+    protected void seeTheMap(View view){
+        Intent intent = new Intent(getApplicationContext(), Map.class);
         startActivity(intent);
     }
 }

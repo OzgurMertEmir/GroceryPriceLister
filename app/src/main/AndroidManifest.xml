@@ -32,6 +32,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.grocerypricelister.MainActivity" />
         </activity>
+
+        <activity
+            android:name=".Map"
+            android:label="Harita"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.grocerypricelister.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
