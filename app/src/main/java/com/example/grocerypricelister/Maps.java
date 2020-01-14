@@ -36,6 +36,7 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -137,18 +138,17 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
 
 
 
-    public void getLatLngFromDatabase()
-    {
-        for(Market market : controllerMaster.getMarkets()){
-            LatLng latLng = market.getLocation();
-            MarkerOptions options = new MarkerOptions();
-            if(market.isOpen()) {
-                options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-            }else {
-                options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+    public void getLatLngFromDatabase() {
+            for (Market market : controllerMaster.getMarkets()) {
+                LatLng latLng = market.getLocation();
+                MarkerOptions options = new MarkerOptions();
+                if (market.isOpen()) {
+                    options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+                } else {
+                    options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+                }
+                mMap.addMarker(options);
+                System.out.println("------------------------------------------LATLNG ADDED TO MARKER POINTS --------------------------------------------------------------");
             }
-            mMap.addMarker(options);
-            System.out.println("------------------------------------------LATLNG ADDED TO MARKER POINTS --------------------------------------------------------------");
-        }
     }
 }

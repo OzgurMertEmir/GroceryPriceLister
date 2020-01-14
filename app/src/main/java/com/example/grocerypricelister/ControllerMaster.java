@@ -21,7 +21,7 @@ public class ControllerMaster{
     }
 
     public ArrayList<Market> getMarkets(){
-        Log.d(TAG, "getCarParks: ENTERED AND SENT CARPARKS TO LOCATIONS");
+        Log.d(TAG, "getMarkets: ENTERED AND SENT MARKETS TO LOCATIONS");
         return markets;
     }
 

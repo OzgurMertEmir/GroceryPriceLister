@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class MarketManager {
     //constants
-    private final static String TAG = "CarParkManager";
+    private final static String TAG = "MarketManager";
 
     //properties
     private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
@@ -58,7 +58,7 @@ public class MarketManager {
         if(chosenMarket != null){
             return chosenMarket.getName();
         }else {
-            return "No Car Park chosen";
+            return "No Market chosen";
         }
     }
 
@@ -66,7 +66,7 @@ public class MarketManager {
         if (chosenMarket != null){
             return chosenMarket.getAdress();
         }else{
-            return "No Car Park chosen";
+            return "No Market chosen";
         }
     }
 
@@ -92,7 +92,7 @@ public class MarketManager {
     }
 
     public ArrayList<Market> getMarkets(){
-        Log.d(TAG, "getCarParks: Method entered!!!!!");
+        Log.d(TAG, "getMarkets: Method entered!!!!!");
         for(Market market : markets){
             System.out.println( "---------------------------------------------------------------------" + market.getName() + "--------------------------------------------------------------------------------");
         }
