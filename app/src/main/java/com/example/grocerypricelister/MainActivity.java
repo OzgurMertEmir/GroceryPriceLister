@@ -1,7 +1,7 @@
 package com.example.grocerypricelister;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
@@ -28,7 +28,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void seeTheMap(View view){
-        Intent intent = new Intent(getApplicationContext(), Map.class);
+        Intent intent = new Intent(getApplicationContext(), Maps.class);
         startActivity(intent);
     }
+
 }

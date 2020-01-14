@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "103081540393",
+    "firebase_url": "https://grocerypricelister.firebaseio.com",
+    "project_id": "grocerypricelister",
+    "storage_bucket": "grocerypricelister.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:103081540393:android:76bd3f82aa0675f5751538",
+        "android_client_info": {
+          "package_name": "com.example.grocerypricelister"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "103081540393-r6gjivgn29kkc2bhcp76gaunmc78svg9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBML3uWsTtFzgqf1OMvTMlgz3ivxhieIXE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "103081540393-r6gjivgn29kkc2bhcp76gaunmc78svg9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

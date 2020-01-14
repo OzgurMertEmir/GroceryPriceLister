@@ -1,7 +1,11 @@
 package com.example.grocerypricelister;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+
 public class Product {
 
+    private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
     double price;
     int stock;
     int weight;
@@ -16,11 +20,8 @@ public class Product {
         //Data fetchimg
     }
 
-
     //methods
-    public double getPrice(){
-        return price;
-    }
+    public double getPrice(){ return price; }
 
     public boolean getFavorites(){
         return favorites;
@@ -29,6 +30,7 @@ public class Product {
     public boolean getSale(){
         return sale;
     }
+
     public boolean getAvailable(){
         return available;
     }
@@ -44,28 +46,33 @@ public class Product {
     public int getWeight(){
         return weight;
     }
+
     public int getStock(){
         return stock;
     }
 
     public void setFavorites(boolean a){
-        favorites = a;
+        this.favorites = a;
     }
 
     public void setSale(boolean a){
-        sale = a;
+        this.sale = a;
     }
 
     public void lifespanDailyUpdate(){
         lifespan --;
     }
+
     public void setAvailable(){
-        if (getStock() > 0){
-            available = true;
+        if (this.getStock() > 0){
+            this.available = true;
         }
         else{
-            available = false;
+            this.available = false;
         }
     }
 
+    public void addPropertyChangeListener(PropertyChangeListener listener){
+        this.propertyChangeSupport.addPropertyChangeListener("stock", listener);
+    }
 }
