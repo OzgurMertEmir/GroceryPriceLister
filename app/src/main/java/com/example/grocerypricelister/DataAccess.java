@@ -125,8 +125,6 @@ public class DataAccess {private final static String TAG = "DataAccess";
 
                         JSONObject jsonObject1 = new JSONObject(values);
                         hashMap.put("name", jsonObject1.get("name").toString());
-                        hashMap.put("openingTime", jsonObject1.get("openingTime").toString());
-                        hashMap.put("closingTime", jsonObject1.get("closingTime").toString());
                         hashMap.put("latitude", jsonObject1.get("latitude").toString());
                         hashMap.put("longitude", jsonObject1.get("longitude").toString());
                         hashMap.put("adress", jsonObject1.get("adress").toString());

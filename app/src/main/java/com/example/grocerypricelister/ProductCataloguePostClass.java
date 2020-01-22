@@ -1,48 +1,60 @@
 package com.example.grocerypricelister;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class ProductCataloguePostClass extends ArrayAdapter<String> {
+public class ProductCataloguePostClass extends RecyclerView.Adapter<ProductCataloguePostClass.ViewHolder> {
 
-    private ArrayList<String> gpName;
-    private ArrayList<String> gpPrice;
-    private ArrayList<String> gpSize;
-    private ArrayList<Boolean> gpCondition;
-    private final Activity context;
+    private final Context context;
+    private ControllerMaster controllerMaster;
+    private ArrayList<Product> products;
 
-    public ProductCataloguePostClass(ArrayList<String> gpName, ArrayList<String> gpPrice, ArrayList<String> gpSize, ArrayList<Boolean> gpCondition, Activity context) {
+    public ProductCataloguePostClass(ArrayList<Product> products, Context context) {
 
-        super(context, R.layout.product_item, gpName);
-        this.gpName = gpName;
-        this.gpPrice = gpPrice;
-        this.gpSize = gpSize;
-        this.gpCondition = gpCondition;
+        this.products = products;
         this.context = context;
     }
 
+    @NonNull
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
-        LayoutInflater layoutInflater = context.getLayoutInflater();
-        View groceryInfo = layoutInflater.inflate(R.layout.product_item, null, true);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_item, parent, false);
+        ViewHolder viewHolder = new ViewHolder(view);
+        return viewHolder;
+    }
 
-        //Find components
-        TextView gpNameText = groceryInfo.findViewById(R.id.gpName);
-        TextView gpSizeText = groceryInfo.findViewById(R.id.gpSize);
-        TextView gpPriceText = groceryInfo.findViewById(R.id.gpPrice);
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Product product = products.get(position);
+        holder.gpNameText.setText(product.getName());
+        holder.gpSizeText.setText(product.getWeight());
+        holder.gpPriceText.setText(String.valueOf(product.getPrice()));
+    }
 
-        //set method  of components
-        gpNameText.setText(gpName.get(position));
-        gpSizeText.setText(gpSize.get(position));
-        gpPriceText.setText(gpPrice.get(position));
+    @Override
+    public int getItemCount() {
+        return products.size();
+    }
 
-        return groceryInfo;
+    public class ViewHolder extends RecyclerView.ViewHolder{
+
+        public TextView gpNameText;
+        public TextView gpSizeText;
+        public TextView gpPriceText;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            gpNameText = itemView.findViewById(R.id.gpName);
+            gpSizeText = itemView.findViewById(R.id.gpSize);
+            gpPriceText = itemView.findViewById(R.id.gpPrice);
+        }
     }
 }

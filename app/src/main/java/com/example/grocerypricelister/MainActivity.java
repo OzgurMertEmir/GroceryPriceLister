@@ -21,12 +21,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    protected void seeTheSearchBar (View view)
-    {
-        Intent intent = new Intent(getApplicationContext(), Search.class);
-        startActivity(intent);
-    }
-
     protected void seeTheMap(View view){
         Intent intent = new Intent(getApplicationContext(), Maps.class);
         startActivity(intent);

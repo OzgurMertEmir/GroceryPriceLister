@@ -6,7 +6,6 @@ import com.google.android.gms.maps.model.Marker;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.HashMap;
-
 public class Market {
 
     private String name;

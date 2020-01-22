@@ -2,6 +2,7 @@ package com.example.grocerypricelister;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.HashMap;
 
 public class Product {
 
@@ -16,8 +17,18 @@ public class Product {
     int lifespan;
     String detailed_info;
 
-    public Product(){
+    public Product(HashMap<String, String > properties){
         //Data fetchimg
+        name = properties.get("name");
+        price = Double.valueOf(properties.get("price"));
+        stock = Integer.valueOf(properties.get("stock"));
+        weight = Integer.valueOf(properties.get("weight"));
+        if(stock > 0){
+            available = true;
+        }
+        else{
+            available = false;
+        }
     }
 
     //methods
@@ -60,7 +71,9 @@ public class Product {
     }
 
     public void lifespanDailyUpdate(){
-        lifespan --;
+        if(lifespan > 0){
+            lifespan --;
+        }
     }
 
     public void setAvailable(){
