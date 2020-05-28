@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -15,14 +17,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    protected void seeTheCatalogue(View view)
-    {
+    public void seeTheCatalogue(View view){
         Intent intent = new Intent(getApplicationContext(), ProductCatalogue.class);
         startActivity(intent);
     }
 
-    protected void seeTheMap(View view){
+    public void seeTheMap(View view){
         Intent intent = new Intent(getApplicationContext(), Maps.class);
         startActivity(intent);
     }
+
+    public void seeTheBasket(View view){
+        Intent intent = new Intent(getApplicationContext(), Maps.class);
+        startActivity(intent);
+    }
+
 }

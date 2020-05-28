@@ -2,6 +2,7 @@ package com.example.grocerypricelister;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Product {
@@ -15,20 +16,32 @@ public class Product {
     boolean favorites;
     boolean sale;
     int lifespan;
+    int inBasket;
+    ArrayList<Market> sellers;
     String detailed_info;
+
+    /**
 
     public Product(HashMap<String, String > properties){
         //Data fetchimg
         name = properties.get("name");
         price = Double.valueOf(properties.get("price"));
         stock = Integer.valueOf(properties.get("stock"));
-        weight = Integer.valueOf(properties.get("weight"));
+        weight = Integer.valueOf(properties.get("size"));
         if(stock > 0){
             available = true;
         }
         else{
             available = false;
         }
+    }
+     */
+    public Product(String name, double price, int weight, int stock){
+        this.name = name;
+        this.price = price;
+        this.weight = weight;
+        this.stock = stock;
+        this.inBasket = 0;
     }
 
     //methods
@@ -82,6 +95,16 @@ public class Product {
         }
         else{
             this.available = false;
+        }
+    }
+
+    public int getinBasket(){ return inBasket; }
+
+    public void addToBasket(){ inBasket++; }
+
+    public void remFromBasket(){
+        if(inBasket > 0){
+            inBasket--;
         }
     }
 
