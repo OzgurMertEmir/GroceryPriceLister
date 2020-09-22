@@ -17,7 +17,13 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.login.Sepet"
-            android:label="@string/title_activity_sepet"></activity>
+            android:label="@string/title_activity_sepet">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -34,11 +40,7 @@
             android:name=".Maps"
             android:label="@string/title_activity_maps" />
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ProductCatalogue"
@@ -47,6 +49,9 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.grocerypricelister.MainActivity" />
+        </activity>
+        <activity android:name=".Basket">
+
         </activity>
     </application>
 

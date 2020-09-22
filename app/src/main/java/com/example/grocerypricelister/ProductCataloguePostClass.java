@@ -1,6 +1,7 @@
 package com.example.grocerypricelister;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,20 +9,24 @@ import android.widget.Button;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ProductCataloguePostClass extends RecyclerView.Adapter<ProductCataloguePostClass.ViewHolder> implements Filterable {
 
     private final Context context;
-    private ControllerMaster controllerMaster;
     private ArrayList<Product> products;
     ArrayList<Product> productsFull;
     private OnItemClickListener onItemClickListener;
     public Button remove;
     public Button add;
+    static SharedPreferences numOfProducts;
+    Set<String> spData;
+    static ArrayList<Integer> pNumInBasket;
+    SharedPreferences.Editor editor;
 
 
     public interface OnItemClickListener{
@@ -37,6 +42,18 @@ public class ProductCataloguePostClass extends RecyclerView.Adapter<ProductCatal
         this.products = products;
         productsFull = new ArrayList<>(products);
         this.context = context;
+        pNumInBasket = new ArrayList<>();
+        numOfProducts = context.getSharedPreferences("com.example.grocerypricelister", Context.MODE_PRIVATE);
+        spData = new HashSet<>(numOfProducts.getStringSet("numOfinBasket", new HashSet<String>()));
+        for(Product p : products){
+            spData.add(String.valueOf(p.getinBasket()));
+            pNumInBasket.add(p.getinBasket());
+        }
+
+        editor = numOfProducts.edit();
+        editor.putStringSet("numOfinBasket", spData).apply();
+        editor.commit();
+        System.out.println("------------------------------------------------------------------------------------"+ pNumInBasket);
     }
 
     @NonNull
@@ -52,8 +69,9 @@ public class ProductCataloguePostClass extends RecyclerView.Adapter<ProductCatal
         holder.gpNameText.setText(product.getName());
         holder.gpSizeText.setText(String.valueOf(product.getWeight()));
         holder.gpPriceText.setText(String.valueOf(product.getPrice()));
-        holder.itemnumberinBasket.setText(String.valueOf(product.getinBasket()));
+        holder.itemnumberinBasket.setText(String.valueOf(pNumInBasket.get(position)));
         View.OnClickListener buttonClickListener = new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 switch (v.getId()){
@@ -61,6 +79,11 @@ public class ProductCataloguePostClass extends RecyclerView.Adapter<ProductCatal
                         int indexR = holder.getAdapterPosition();
                         Product pR = products.get(indexR);
                         pR.remFromBasket();
+                        pNumInBasket.set(indexR, pR.getinBasket());
+                        pR.setinBasket(pR.getinBasket());
+                        editor.clear();
+                        editor.putStringSet("numOfinBasket", spData).apply();
+                        editor.commit();
                         notifyDataSetChanged();
                         break;
 
@@ -68,10 +91,14 @@ public class ProductCataloguePostClass extends RecyclerView.Adapter<ProductCatal
                         int indexA= holder.getAdapterPosition();
                         Product pA = products.get(indexA);
                         pA.addToBasket();
+                        pNumInBasket.set(indexA, pA.getinBasket());
+                        pA.setinBasket(pA.getinBasket());
+                        editor.clear();
+                        editor.putStringSet("numOfinBasket", spData).apply();
+                        editor.commit();
                         notifyDataSetChanged();
                         break;
                 }
-
             }
         };
         remove.setOnClickListener(buttonClickListener);
@@ -91,7 +118,7 @@ public class ProductCataloguePostClass extends RecyclerView.Adapter<ProductCatal
     public Filter filter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
-            ArrayList<Product> filteredProducts = new ArrayList<Product>();
+            ArrayList<Product> filteredProducts = new ArrayList<>();
             if(constraint == null || constraint.length() == 0){
                 filteredProducts.addAll(productsFull);
             }
@@ -145,5 +172,4 @@ public class ProductCataloguePostClass extends RecyclerView.Adapter<ProductCatal
             });
         }
     }
-
 }

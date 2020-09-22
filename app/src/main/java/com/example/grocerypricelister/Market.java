@@ -16,7 +16,7 @@ public class Market {
     private LatLng location;
     private boolean isOpen;
 
-    public Market(HashMap<String, String > properties)
+   /**public Market(HashMap<String, String > properties)
     {
         name = properties.get("name");
         latitude = Double.valueOf(properties.get("latitude"));
@@ -24,7 +24,16 @@ public class Market {
         location = new LatLng(latitude, longtitude );
         adress = properties.get("adress");
     }
-
+*/
+   public Market(String name, double latitude, double longtitude, String adress)
+   {
+       this.name = name;
+       this.latitude = latitude;
+       this.longtitude = longtitude;
+       this.location = new LatLng(this.latitude, this.longtitude );
+       this.adress = adress;
+       isOpen = true;
+   }
     public String getName(){ return name; }
 
     public String getAdress(){ return adress; }

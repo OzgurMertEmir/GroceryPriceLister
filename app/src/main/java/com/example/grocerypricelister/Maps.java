@@ -17,6 +17,8 @@ import androidx.fragment.app.FragmentActivity;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -38,8 +40,8 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
 
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+        MapFragment mapFragment1 = (MapFragment)getFragmentManager().findFragmentById(R.id.mapFragment);
+        mapFragment1.getMapAsync(this);
         controllerMaster = new ControllerMaster();
     }
 
@@ -140,8 +142,10 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
 
     public void getLatLngFromDatabase() {
             for (Market market : controllerMaster.getMarkets()) {
-                LatLng latLng = market.getLocation();
+                LatLng latLng = new LatLng(market.getLatitude(), market.getLongtitude());
                 MarkerOptions options = new MarkerOptions();
+                options.position(latLng);
+                options.title(market.getName());
                 if (market.isOpen()) {
                     options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
                 } else {

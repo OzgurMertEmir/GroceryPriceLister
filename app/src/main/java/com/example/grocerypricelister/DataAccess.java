@@ -129,8 +129,9 @@ public class DataAccess {private final static String TAG = "DataAccess";
                         hashMap.put("longitude", jsonObject1.get("longitude").toString());
                         hashMap.put("adress", jsonObject1.get("adress").toString());
 
-                        Market market = new Market(hashMap);
-                        Marketler.add(market);
+                        //databasedewn sonra aacilacak asagidaki ikisi
+                        //Market market = new Market(hashMap);
+                        //Marketler.add(market);
 
                     }
                     firstTimeOpened = false;

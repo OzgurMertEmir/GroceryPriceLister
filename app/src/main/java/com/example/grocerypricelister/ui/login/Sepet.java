@@ -5,6 +5,7 @@ import android.app.Activity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -22,6 +23,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.grocerypricelister.MainActivity;
+import com.example.grocerypricelister.ProductCatalogue;
 import com.example.grocerypricelister.R;
 import com.example.grocerypricelister.ui.login.LoginViewModel;
 import com.example.grocerypricelister.ui.login.LoginViewModelFactory;
@@ -40,6 +43,7 @@ public class Sepet extends AppCompatActivity {
         final EditText usernameEditText = findViewById(R.id.username);
         final EditText passwordEditText = findViewById(R.id.password);
         final Button loginButton = findViewById(R.id.login);
+        final Button signUp = findViewById(R.id.signUp);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
@@ -75,6 +79,8 @@ public class Sepet extends AppCompatActivity {
 
                 //Complete and destroy login activity once successful
                 finish();
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
             }
         });
 

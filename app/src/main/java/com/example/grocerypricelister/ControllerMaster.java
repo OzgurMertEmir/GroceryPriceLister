@@ -16,7 +16,7 @@ public class ControllerMaster{
     //properties
     private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
     static MarketManager marketManager = new MarketManager();
-    private ArrayList<Market> markets;
+    private ArrayList<Market> markets = new ArrayList<>();
     private ArrayList<Product> products = new ArrayList<Product>();
 
     public MarketManager getMarketManager(){
@@ -25,6 +25,17 @@ public class ControllerMaster{
 
     public ArrayList<Market> getMarkets(){
         Log.d(TAG, "getMarkets: ENTERED AND SENT MARKETS TO LOCATIONS");
+        //silincek bunlar deneme icin varlar
+        Market market1 = new Market("Umitkoy Migros", 35.6, 37.5, "Umitkoy");
+        Market market2 = new Market("Umitkoy Carrefour", 35.8, 37.3, "Umitkoy");
+        Market market3 = new Market("Yasamkent Migros", 35.9, 37.9, "Yasamkent");
+        Market market4 = new Market("Yasamkent Carrefour", 35.9, 37.4, "Yasamkent");
+        Market market5 = new Market("Arcadium Migros", 35.65, 37.58, "Arcadium");
+        markets.add(market1);
+        markets.add(market2);
+        markets.add(market3);
+        markets.add(market4);
+        markets.add(market5);
         return markets;
     }
 

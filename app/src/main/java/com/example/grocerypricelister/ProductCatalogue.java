@@ -32,7 +32,6 @@ public class ProductCatalogue extends AppCompatActivity {
     ArrayList<Integer> inBasketNum;
     ProductCataloguePostClass adapter;
     RecyclerView recyclerView;
-    SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,5 +110,4 @@ public class ProductCatalogue extends AppCompatActivity {
         });
         return true;
     }
-
 }

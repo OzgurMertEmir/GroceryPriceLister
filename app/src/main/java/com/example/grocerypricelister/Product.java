@@ -1,13 +1,26 @@
 package com.example.grocerypricelister;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
+import androidx.annotation.Nullable;
+
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+import static com.example.grocerypricelister.ProductCataloguePostClass.numOfProducts;
+import static com.example.grocerypricelister.ProductCataloguePostClass.pNumInBasket;
 
 public class Product {
 
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
+
+    ControllerMaster controllerMaster = new ControllerMaster();
+    int counter = 0;
     double price;
     int stock;
     int weight;
@@ -41,7 +54,6 @@ public class Product {
         this.price = price;
         this.weight = weight;
         this.stock = stock;
-        this.inBasket = 0;
     }
 
     //methods
@@ -99,6 +111,8 @@ public class Product {
     }
 
     public int getinBasket(){ return inBasket; }
+
+    public void setinBasket(int a){ inBasket = a; }
 
     public void addToBasket(){ inBasket++; }
 
